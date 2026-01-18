@@ -1,0 +1,71 @@
+### Update profile detail
+
+PUT localhost:8081/profile/detail
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWtocm9ia2hvbGRvcm92OTk5QGdtYWlsLmNvbSIsInJvbGVzIjoiUk9MRV9VU0VSIiwiaWQiOiIxODQiLCJpYXQiOjE3NTY1NzMwMDYsImV4cCI6MTc1NjY1OTQwNn0.octUoYVLG3pOVjpLbTocKIPNrqOd9GLL6mu0vZyioidW9wGZgiC9BFut1Z8-IbmDA_aODcyWPTwieXcfSQC8_w
+
+{
+    "name": "Alish"
+}
+
+### Update username
+
+PUT localhost:8081/profile/username
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWtocm9ia2hvbGRvcm92OTk5QGdtYWlsLmNvbSIsInJvbGVzIjoiUk9MRV9VU0VSIiwiaWQiOiIxOTIiLCJpYXQiOjE3NjY3ODY2NzUsImV4cCI6MTc2Njg3MzA3NX0.4EJaefeUyg3RRYAYQSaoYF1qJqRKTvIHMCgwVN0NpIf6U2rYeVmxzixITnBAvQO1STO7AuWcLwkrFBKwrlevBw
+{
+    "username": "sukhrobkholdorov999@gmail.com"
+}
+
+### Update username confirm
+
+PUT localhost:8081/profile/username/confirm
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWtocm9ia2hvbGRvcm92OTk5MUBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUiIsImlkIjoiMTg0IiwiaWF0IjoxNzU2OTMwOTEwLCJleHAiOjE3NTcwMTczMTB9.zFd_O1L-UvnPhWyCBtZvzxAOwSZKiGdsoFaiIZEkDkQHGU3S1qhq1xZm2zeluLPsWBASyDmRl61l9LzSJbbQNA
+
+{
+    "code": "59062" // tentative code that you get from sms
+}
+
+### Update profile photo
+
+PUT localhost:8081/profile/photo
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWtocm9ia2hvbGRvcm92OTk5MUBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUiIsImlkIjoiMTg0IiwiaWF0IjoxNzU3NzIxOTY3LCJleHAiOjE3NTc4MDgzNjd9.cCgFdDc8N5ovT6j5m7qUVSZ2xzyfE0hcF7iu4mZHGm9YWQa0SRJfeF-kEfA8QeTlnin-If4qniIlNYf8ZetrQg
+{
+    "photoId": "8a6f162a-1b41-42f1-a885-dee202eb831f.jpg"
+}
+
+### Update profile password
+
+PUT localhost:8081/profile/password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWtocm9ia2hvbGRvcm92OTk5QGdtYWlsLmNvbSIsInJvbGVzIjoiUk9MRV9VU0VSIiwiaWQiOiIxODQiLCJpYXQiOjE3NTY2NzIwNzQsImV4cCI6MTc1Njc1ODQ3NH0.ac2jDVwFjXsAHkNn_a0EfJ9P-zItIvzmnGZqIL6IdzxxAzZga8Mju7qlFWgN_iOfcUiIMxJaqAUypYgRAQkdtw
+
+{
+    "currentPswd": "123123",
+    "newPswd": "121212"
+}
+
+### Profile Filter
+POST localhost:8081/profile/filter?page=2&size=10
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbmpvbkBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUixST0xFX0FETUlOIiwiaWQiOiIxIiwiaWF0IjoxNzY3OTIxMjUzLCJleHAiOjE3NjgwMDc2NTN9.UYL24W7yZPbBoR79Frq9t3dhntezXQzhdAUoua8tkF_TNr0owsN4YBpLbqSRNuhSBykRw_LhtJCjUFab96woMg
+
+{
+    "query": "a"
+}
+
+### Profile update status
+PUT localhost:8081/profile/status/155
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbmpvbkBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUixST0xFX0FETUlOIiwiaWQiOiIxIiwiaWF0IjoxNzY3NzcyMTg1LCJleHAiOjE3Njc4NTg1ODV9.6tQabDN47D8M6m9iwqy1FdlOURQGi-VcPPJqSbyTLhcQOLJt2CvDVGSQTVHGBkfl97CMLFBd6Me7CdeKa56Kfg
+
+{
+    "status": "ACTIVE"
+}
+
+### Profile delete
+DELETE localhost:8081/profile/155
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbmpvbkBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUixST0xFX0FETUlOIiwiaWQiOiIxIiwiaWF0IjoxNzY3OTIxMjUzLCJleHAiOjE3NjgwMDc2NTN9.UYL24W7yZPbBoR79Frq9t3dhntezXQzhdAUoua8tkF_TNr0owsN4YBpLbqSRNuhSBykRw_LhtJCjUFab96woMg

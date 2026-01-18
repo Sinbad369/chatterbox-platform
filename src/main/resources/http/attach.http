@@ -1,0 +1,13 @@
+### Upload Attach
+POST http://localhost:8081/attach/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWtocm9ia2hvbGRvcm92OTk5MUBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUiIsImlkIjoiMTg0IiwiaWF0IjoxNzU5NTI5NjQ0LCJleHAiOjE3NTk2MTYwNDR9.dI5LXWbURE4THtcQ96FXV0zoMaXFfOVO7dUXZijQppuLfHAR3yIUV-is0kTgR0ARfGotUrHLfVjE172xK0Dz8Q
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="Photo2026.jpg"
+
+<D:\Chatterbox\api.chatterbox.uz\data\Photo2026.jpg
+
+### Open Attach
+GET http://localhost:8081/attach/open/8b3c180c-c97b-4f98-b3ec-2ffc3c13c277.jpg
+

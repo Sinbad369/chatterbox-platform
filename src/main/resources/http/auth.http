@@ -1,0 +1,71 @@
+### Registration
+POST localhost:8080/auth/registration
+Content-Type: application/json
+Accept-Language: EN
+
+### email
+{
+  "name": "Dear Edmond",
+  "username": "edmondbaruch@gmail.com",
+  "password": "12345"
+}
+### sms
+
+{
+  "name": "Dear Edmond",
+  "username": "998915721213",
+  "password": "12345"
+}
+
+
+### Registration Verification
+GET http://localhost:8080/auth/registration/verification/{profileId}
+
+### Registration Sms Verification
+POST localhost:8081/auth/registration/sms-verification
+Content-Type: application/json
+{
+  "phone": "998915721213",
+  "code": "12345"
+}
+
+### Registration Sms Verification Resend
+POST localhost:8081/auth/registration/sms-verification-resend
+Content-Type: application/json
+{
+  "phone": "998915721213"
+}
+
+### Reset Password
+POST localhost:8081/auth/reset-password
+Content-Type: application/json
+{
+  "username": "998915721213",
+}
+
+### Reset Password Confirm
+POST localhost:8081/auth/reset-password-confirm
+Content-Type: application/json
+{
+  "username": "sukhrobkholdorov999@gmail.com",
+  "confirmCode": "blablabla",
+  "password": "121212"
+}
+
+### Login
+POST localhost:8081/auth/login
+Content-Type: application/json
+
+{
+  "username": "sukhrobkholdorov999@gmail.com",
+  "password": "121212"
+}
+
+### Login as Admin
+POST localhost:8081/auth/login
+Content-Type: application/json
+
+{
+  "username": "adminjon@gmail.com",
+  "password": "123456"
+}

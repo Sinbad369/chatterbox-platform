@@ -1,0 +1,239 @@
+*********************** Chatterbox.uz ******************************
+            Chatterbox.uz website has the following requirements:
+1.  Users should see the table of posts(gossips) when they enter the website.
+    Latest gossips should be seen first, plus, there should be function to search them.
+    To see all gossips, there should be pagination.
+
+    If clicked on particular gossip, there should be a separate page for that gossip.
+    In that page, there should be the image, full story, and author-info should be shown.
+
+    Users entered via login can create new gossips.
+
+2.  Users should get registered and previously registered users should be able to login.
+
+    In registration, Name, Email/Phone, and Password should be entered.
+    There should be chance to get registered via phone number too(Name, PhoneNumber, Password).
+    While registration email of phone should be verified.
+
+    In login, Email/Phone and Password required.
+    Password Forgotten? There should be function to recover it.
+
+3.  Gossip creation. To create a new gossip, image and content should be uploaded and content length should be at least
+    100 letters.
+
+    User should be able to see, edit, and delete his own gossips.
+
+4.  User must be able to update his own information.
+    For example, his name, email/phone.
+    P.S. When email and phone is updated, it must be verified.
+
+5.  Admins can see all gossips in the system and must have right to delete them.
+
+6.  Admins should be able to see all users in the system, and must have right to block them
+    Blocked users can not enter the system via login.
+
+
+----- Used Technology and Frameworks
+1. Spring Boot
+2. Spring Security + Bcrypt Algorithm
+3. Spring Data JPA + Hibernate + PostgresSQL
+4. Flyway
+5. Logging
+6. Internationalization (multi-language)
+7. Swagger
+8. Property files
+9. Maven
+10. For Registration, use Email or SMS sending (Reset Password)
+11. CSS, HTML, Bootstrap, JavaScript, AJAX
+12.
+
+----- Integrations
+1. Email sending
+2. SMS provider integration
+
+----- Main Goal
+- Build a project from scratch
+- Configure and use multiple technologies together
+- Structure the project
+- Understand frontend working principles
+- Work with USER/ADMIN roles
+- Design the database architecture
+- Implement Registration/Login/Reset password logic
+
+----- APIs
+
+### 1. Auth
+1. **Registration** (Sign-up)
+   - Request: `{ name, username, password }`
+   - Response: `OK status`
+
+2. **Registration Confirm** (Verify Email or Phone)
+   - Separate APIs for email confirmation and phone confirmation
+   - Request: Depends on logic
+   - Response: `{ name, username, roleList, jwt, photo { id, url } }`
+
+3. **Registration Verification Resend** (Resend verification code if SMS is not received)
+   - Request: `{ name, username, password }`
+   - Response: `OK status`
+
+4. **Authorization (Login)**
+   - Request: `{ username, password }` (username can be phone or email)
+   - Response: `{ name, username, roleList, jwt, photo { id, url } }`
+
+5. **Reset Password**
+   - Request: `{ username }` (username can be phone or email)
+   - Response: Depends on logic
+
+6. **Reset Password Confirm**
+   - Request: `{ username, confirmCode, password }` (password = new password)
+   - Response: Depends on logic
+
+### 2. Attach
+1. **Image Upload API** (USER, ADMIN)
+2. **Open Image API** (ANY)
+
+### 3. Post - Gossip
+1. **Create Gossip Post** (USER)
+   - Request: `{ title, content, photo { id } }`
+   - Response: `{ id, title, content, photo { id, url }, createdDate }`
+
+2. **Profile Post List** (USER, ADMIN) (Returns posts created by the requested profile, with pagination)
+   - Request:
+     - Params: `page, size` (in URL)
+   - Response:
+     ```json
+     [
+       { id, title, content, photo { id, url }, createdDate },
+       ...
+     ]
+     ```
+
+3. **Get Post by ID** (USER, ADMIN)
+   - Request:
+     - PathVariable: `id` (in URL)
+   - Response: `{ id, title, content, photo { id, url }, createdDate }`
+
+4. **Update Post by ID** (USER)
+   - Request:
+     - Param: `id`
+     - Body: `{ title, content, photo { id } }`
+   - Response: `{ id, title, content, photo { id, url }, createdDate }`
+
+5. **Delete Post by ID** (USER - only post owner, ADMIN)
+   - Request:
+     - Param: `id`
+   - Response: `OK status`
+
+6. **Public Filter** (Search + Pagination) (ANY)
+   - Request:
+     - Params: `page, size`
+     - Body: `{ query }`
+   - Response:
+     ```json
+     [
+       {
+         id,
+         title,
+         content (first 150 chars),
+         photo { id, url },
+         createdDate,
+         profile { id, name, photoUrl }
+       },
+       ...
+     ]
+     ```
+
+7. **Similar Post List** (Returns 3 similar posts excluding the given post) (ANY)
+   - Request:
+     - Params: `page, size`
+     - Body: `{ query }`
+   - Response:
+     ```json
+     [
+       {
+         id,
+         title,
+         content (first 150 chars),
+         photo { id, url },
+         createdDate,
+         profile { id, name, photoUrl }
+       },
+       ...
+     ]
+     ```
+
+8. **Admin Filter** (Search + Pagination) (ADMIN)
+   - Request:
+     - Params: `page, size`
+     - Body: `{ query }`
+   - Response:
+     ```json
+     [
+       {
+         id,
+         title,
+         content (first 150 chars),
+         photo { id, url },
+         createdDate,
+         profile { id, name, photoUrl }
+       },
+       ...
+     ]
+     ```
+
+### 4. Profile
+1. **Get Profile Details** (Returns details of the requested profile) (USER, ADMIN)
+   - Response: `{ name, username, roleList, photo { id, url } }`
+
+2. **Update Profile Details** (USER, ADMIN)
+   - Request: `{ name }`
+   - Response: `Message`
+
+3. **Update Profile Photo** (USER, ADMIN)
+   - Request: `{ photoId }`
+   - Response: `MessageResponse`
+
+4. **Update Password** (USER, ADMIN)
+   - Request: `{ currentPswd, newPswd }`
+   - Response: `MessageResponse`
+
+5. **Update Username** (Change phone or email) (USER, ADMIN)
+   - Request: `{ username }`
+   - Response: `MessageResponse`
+
+6. **Confirm Username Update** (USER, ADMIN)
+   - Request: `{ code }`
+   - Response: `MessageResponse`
+
+7. **Filter Profiles with Pagination** (ADMIN)
+   - Request:
+     - Params: `page, size`
+     - Body: `{ query }`
+   - Response:
+     ```json
+     [
+       {
+         id,
+         name,
+         username,
+         photo { id, url },
+         postCount
+       },
+       ...
+     ]
+     ```
+
+8. **Update Profile Status** (ADMIN)
+   - Request:
+     - Param: `id`
+   - Response: `OK status`
+
+9. **Delete Profile** (ADMIN)
+   - Request:
+     - Param: `id`
+   - Response: `OK status`
+
+----- Recourses
+1. Figma: https://www.figma.com/design/ZrhmVGpDPKB0anzoZfs85x/Gi'ybat.uz
+2. Frontend (verstka): https://github.com/codeuzbek/giybat-frontend-verstka
+3. Backend talablar: https://github.com/codeuzbek/giybat-talablar

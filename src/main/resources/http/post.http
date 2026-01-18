@@ -1,0 +1,65 @@
+### Create Post
+POST localhost:8081/post
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWtocm9ia2hvbGRvcm92OTk5MUBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUiIsImlkIjoiMTg0IiwiaWF0IjoxNzU5NTI5NjQ0LCJleHAiOjE3NTk2MTYwNDR9.dI5LXWbURE4THtcQ96FXV0zoMaXFfOVO7dUXZijQppuLfHAR3yIUV-is0kTgR0ARfGotUrHLfVjE172xK0Dz8Q
+
+{
+    "title": "Gossip 1",
+    "content": "sasad sdfasdfa asdasdf sadfasfdasdf asdfdasdfasgebtgfgagfeajg amsdf",
+    "photo": {
+        "id": "33b0e5ad-7ca2-4a0d-acd5-57ac6c40a5e5.jpg"
+    }
+}
+
+### Profile post list
+GET localhost:8081/post/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWtocm9ia2hvbGRvcm92OTk5MUBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUiIsImlkIjoiMTg0IiwiaWF0IjoxNzU5Njk5OTExLCJleHAiOjE3NTk3ODYzMTF9.onJx5SfwbIjauvJvAE2-xfj2FVv8OCs7222VqpkTuwbtfRuHfHZT4IDidzK5rLxxktQs65kLkXlcYNEc16I4Zg
+
+### Get Post by id
+GET localhost:8081/post/public/954a026d-8a34-4c12-99ca-6d13c0faa528
+Content-Type: application/json
+
+### Update Post
+PUT localhost:8081/post/6d3135ee-4e22-4f3c-9d8a-01cc1bc59f11
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbmpvbkBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUixST0xFX0FETUlOIiwiaWQiOiIxIiwiaWF0IjoxNzU5NzA0NjE0LCJleHAiOjE3NTk3OTEwMTR9.6n9AMNzAl_IyGHQOuvXY7HYjHdLfB4OvZPvoQEUrAXyQG4AJpXRp2f6S210-ZiZczOEHEEG8eSozmeShqCmyMg
+
+{
+    "title": "Gossip kokalsssalafasfsdfdfasdfdf",
+    "content": "idinaryoga",
+    "photo": {
+        "id": "33b0e5ad-7ca2-4a0d-acd5-57ac6c40a5e5.jpg"
+    }
+}
+
+### Delete Post
+DELETE localhost:8081/post/6d3135ee-4e22-4f3c-9d8a-01cc1bc59f11
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbmpvbkBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUixST0xFX0FETUlOIiwiaWQiOiIxIiwiaWF0IjoxNzU5NzA0NjE0LCJleHAiOjE3NTk3OTEwMTR9.6n9AMNzAl_IyGHQOuvXY7HYjHdLfB4OvZPvoQEUrAXyQG4AJpXRp2f6S210-ZiZczOEHEEG8eSozmeShqCmyMg
+
+### Filter Post
+POST localhost:8081/post/public/filter?page=1&size=3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbmpvbkBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUixST0xFX0FETUlOIiwiaWQiOiIxIiwiaWF0IjoxNzU5NzA0NjE0LCJleHAiOjE3NTk3OTEwMTR9.6n9AMNzAl_IyGHQOuvXY7HYjHdLfB4OvZPvoQEUrAXyQG4AJpXRp2f6S210-ZiZczOEHEEG8eSozmeShqCmyMg
+
+{
+    "query": null,
+}
+
+### Filter Post 3 similar
+POST localhost:8081/post/public/similar
+Content-Type: application/json
+
+{
+    "exceptId": "59359919-88c1-432d-8ef3-174a14a41bf3"
+}
+
+### Admin Post filter
+POST localhost:8081/post/filter?page=1&size=10
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbmpvbkBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfVVNFUixST0xFX0FETUlOIiwiaWQiOiIxIiwiaWF0IjoxNzY4MDA1NzY5LCJleHAiOjE3NjgwOTIxNjl9.ANzIiYIcHjVdFYw3T8fiJK6Cc0Y53NG7Zk2toKXLrF-j2KY_rfm4nBvgmTUTD_gsYJnQHZwjkd_JhMQ1p9HKoQ
+
+{
+    "postQuery": null,
+    "profileQuery": "a"
+}

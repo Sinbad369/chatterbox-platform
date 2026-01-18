@@ -1,0 +1,20 @@
+### Eskiz Login
+POST https://notify.eskiz.uz/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "sukhrobkholdorov999@gmail.com",
+    "password": "zocvyJNlBlrHPurejlS29jWs0gZpolxaUrKij4df"
+}
+
+### Eskiz sms send
+POST https://notify.eskiz.uz/api/message/sms/send
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTMyODE5MzMsImlhdCI6MTc1MDY4OTkzMywicm9sZSI6InRlc3QiLCJzaWduIjoiZTg5YjEzNjJjNjgyYmU3YjJmMjVmYjhkNzZmZTEzNGU4Y2I1YmUyMTNiMDUxYWRlOTUwMzdkMDUyYWVlMzVlOCIsInN1YiI6IjExMzk2In0.xZAiea-BaL2Z3HIMhVl46f3hWJlSGZrdvmuwT1S3u-0
+
+{
+    "mobile_phone" : "998915721213",
+    ### message should be as "This is test from Eskiz"
+    "message": "<#>kitabu.uz portali. Ro'yxatdan o'tish uchun tasdiqlash ko'di (code): 12345 phone",
+    "from": "4546"
+}
